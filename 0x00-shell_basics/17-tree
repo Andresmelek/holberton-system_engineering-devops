@@ -1,2 +1,2 @@
 #!/bin/bash
-mkdir -p htg{/Welcome,/Welcome/to,Welcome/to/holberton}
+mkdir -p /Welcome/to/holberton
