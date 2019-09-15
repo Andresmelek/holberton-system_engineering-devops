@@ -1,0 +1,3 @@
+#!/bin/bas
+grep ^[[:alpha:]] /etc/ssh/sshd_config
+ 
