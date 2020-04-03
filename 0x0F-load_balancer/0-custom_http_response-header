@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Bash script that installs a nginx with redirection
+# and name of the custom HTTP header X-Served-By
+apt-get update
+apt-get -y install nginx
+http_header="add_header X-Served-By $HOSTNAME;"
+sed -i "/sendfile on;/a $http_header" /etc/nginx/nginx.conf
+service nginx restart
