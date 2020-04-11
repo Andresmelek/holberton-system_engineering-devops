@@ -49,8 +49,8 @@ backend nodes
         timeout connect         10s
         timeout server          1m
         balance roundrobin
-        server 1186-web-01 35.231.144.101:80 check
-        server 1186-web-02 34.229.74.97:80 check
+        server 1143-web-01 35.231.144.101:80 check
+        server 1143-web-02 34.229.74.97:80 check
 backend letsencrypt-backend
         server letsencrypt 127.0.0.1:54321
 
