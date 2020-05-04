@@ -8,30 +8,25 @@ from sys import argv
 import json
 
 if __name__ == "__main__":
-    uid = int(argv[1])
+
     users = requests.get("https://jsonplaceholder.typicode.com/users").json()
     todos = requests.get("https://jsonplaceholder.typicode.com/todos").json()
 
-    for user in users:
-        if user.get("id") == uid:
-            newUser = user
+    putos_users = {}
+    puto_name = {}
 
-    lt = []
-    for todo in todos:
-        if todo.get("userId") == uid:
-            lt.append(todo)
+    for puto in users:
+        uId = puto.get('id')
+        putos_users[uId] = []
+        puto_name[uId] = puto.get('username')
 
-    diccionario = {}
-    listacarechimba = []
-
-    for task in lt:
+    for task in todos:
         nTask = {}
+        uId = task.get('userId')
         nTask['task'] = task.get('title')
         nTask['completed'] = task.get('completed')
-        nTask['username'] = newUser.get('username')
-        listacarechimba.append(nTask)
+        nTask['username'] = puto_name.get(uId)
+        putos_users[uId].append(nTask)
 
-    diccionario[uid] = listacarechimba
-
-    with open("{}.json".format(uid), "w") as file:
-        json.dump(diccionario, file)
+    with open("todo_all_employees.json", "w") as file:
+        json.dump(putos_users, file)
